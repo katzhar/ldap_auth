@@ -11,7 +11,10 @@ exports.LdapConnect = (username, password) => {
             bindDn: "cn=" + username + process.env.LDAP_BIND_DN,
             bindCredentials: password,
             searchBase: process.env.LDAP_SEARCH_BASE,
-            searchFilter: "sAMAccountName=" + username
+            searchFilter: "sAMAccountName=" + username,
+            tlsOptions: {
+                'rejectUnauthorized': false
+            }
         }
     }))
 }
